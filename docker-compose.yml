@@ -25,7 +25,7 @@ services:
     image: openweb/oracle-tomcat:7-jre8
     container_name: decaf_tomcat_service
     ports:
-      - "8081:8080"
+      - "80:8080"
     volumes:
       - ./_webapps:/usr/local/tomcat/webapps
     depends_on:
