@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": ""
+    "start": "./startup.sh",
+    "stop": "./shutdown.sh"
   },
   "repository": {
     "type": "git",
