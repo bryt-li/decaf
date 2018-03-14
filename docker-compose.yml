@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:5.6
+    container_name: decaf_mysql_service
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword@mysql
+    volumes:
+      - ./conf-mysql-db:/var/lib/mysql
+      - ./xxl-conf/doc/db:/docker-entrypoint-initdb.d
+  admin:
+    image: openweb/oracle-tomcat:7-jre8
+    container_name: decaf_tomcat_service
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./xxl-conf/xxl-conf-admin/target/webapps:/usr/local/tomcat/webapps
+    depends_on:
+      - mysql
