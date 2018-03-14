@@ -1,12 +1,18 @@
 version: '3'
 
 services:
+  zookeeper:
+    image: zookeeper
+    restart: always
+    container_name: decaf_zookeeper_service
+    ports:
+      - 2181:2181
   mysql:
     image: mysql:5.6
+    restart: always
     container_name: decaf_mysql_service
     ports:
       - "3306:3306"
-    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword@mysql
     volumes:
@@ -21,3 +27,4 @@ services:
       - ./webapps:/usr/local/tomcat/webapps
     depends_on:
       - mysql
+      - zookeeper
