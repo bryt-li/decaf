@@ -1,3 +1,4 @@
 .DS_Store
-conf-mysql-db
-webapps
+_conf_data
+_webapps
+_zoo_data

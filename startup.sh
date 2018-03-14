@@ -7,9 +7,13 @@ mvn clean
 mvn package
 cd ..
 
-rm -rf webapps
-mkdir webapps
-cp xxl-conf/xxl-conf-admin/target/xxl-conf-admin-1.4.1-SNAPSHOT.war webapps/ROOT.war
-mkdir conf-mysql-db
+rm -rf _webapps
+mkdir _webapps
+cp xxl-conf/xxl-conf-admin/target/xxl-conf-admin-1.4.1-SNAPSHOT.war _webapps/ROOT.war
 
-docker-compose up
+mkdir _conf_data
+mkdir _zoo_data
+mkdir _zoo_data/data
+mkdir _zoo_data/datalog
+
+docker-compose up -d

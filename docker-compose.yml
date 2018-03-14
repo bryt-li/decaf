@@ -5,6 +5,9 @@ services:
     image: zookeeper
     restart: always
     container_name: decaf_zookeeper_service
+    volumes:
+      - ./_zoo_data/data:/data
+      - ./_zoo_data/datalog:/datalog
     ports:
       - 2181:2181
   mysql:
@@ -16,7 +19,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword@mysql
     volumes:
-      - ./conf-mysql-db:/var/lib/mysql
+      - ./_conf_data:/var/lib/mysql
       - ./xxl-conf/doc/db:/docker-entrypoint-initdb.d
   admin:
     image: openweb/oracle-tomcat:7-jre8
@@ -24,7 +27,7 @@ services:
     ports:
       - "8081:8080"
     volumes:
-      - ./webapps:/usr/local/tomcat/webapps
+      - ./_webapps:/usr/local/tomcat/webapps
     depends_on:
       - mysql
       - zookeeper
