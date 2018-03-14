@@ -10,8 +10,13 @@ git submodule update --init --recursive
 
 ## Start / Shutdown
 ```
+# start and stop configuration services
 npm start
 npm stop
+
+# you need live-server to run local document server
+npm i -g live-server
+npm run doc
 ```
 
 
